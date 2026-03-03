@@ -1,0 +1,18 @@
+[
+    {
+        "id": "1",
+        "payload": {
+            "type": "send_message",
+            "recipient": "somebody13",
+            "subject": "Hello"
+        }
+    },
+    {
+        "id": "2",
+        "payload": {
+            "type": "report",
+            "format": "pdf",
+            "name": "idk"
+        }
+    }
+]
