@@ -6,6 +6,7 @@ requires-python = ">=3.10"
 dependencies = [
     "pytest>=8.4.2",
     "pytest-cov>=4.1",
+    "pyfakefs>=6.1.4",
 ]
 
 [tool.pytest.ini_options]
@@ -26,4 +27,4 @@ omit = ["*/__init__.py",]
 
 [tool.coverage.report]
 show_missing = true
-fail_inder = 80
+fail_under = 80

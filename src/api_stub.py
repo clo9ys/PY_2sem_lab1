@@ -1,8 +1,12 @@
-from src.models import Task
+from models import Task
 from dataclasses import dataclass, asdict
+from logger import make_logger
+
+logger = make_logger()
 
 @dataclass
 class ApiTask:
+    """Данные задачи из API-заглушки. Содержит id и все возможные поля"""
     id: str
     type: str
     source_endpoint: str | None = None
@@ -12,6 +16,7 @@ class ApiTask:
 
 
 class ApiTaskSource:
+    """Имитирует внешний API. Возвращает задачи, как будто они пришли по сети"""
     def __init__(self, endpoint: str="http://api-stub/tasks"):
         self.endpoint = endpoint
 
@@ -26,4 +31,5 @@ class ApiTaskSource:
             payload_dict = asdict(task)
             del payload_dict["id"]
             result.append(Task(id=task.id, payload=payload_dict))
+        logger.info(f"Данные из API прочитаны, получено {len(result)} задач")
         return result
